@@ -179,6 +179,11 @@ namespace ARMeilleure.Instructions
             return context.VectorCreateScalar(Const(value));
         }
 
+        public static Operand X86GetScalar(ArmEmitterContext context, ulong value)
+        {
+            return context.VectorCreateScalar(Const(value));
+        }
+
         public static Operand X86GetAllElements(ArmEmitterContext context, float value)
         {
             return X86GetAllElements(context, BitConverter.SingleToInt32Bits(value));
@@ -1473,7 +1478,7 @@ namespace ARMeilleure.Instructions
             if (single)
             {
                 mask = vector ? X86GetAllElements(context, -0f) : X86GetScalar(context, -0f);
-            } 
+            }
             else
             {
                 mask = vector ? X86GetAllElements(context, -0d) : X86GetScalar(context, -0d);
